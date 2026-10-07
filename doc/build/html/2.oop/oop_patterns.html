@@ -1,0 +1,194 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>2.2. 2.2 Lua 面向对象惯用模式 &mdash; Lua 实战开发指南 1.0 documentation</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=9edc463e" />
+      <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+      <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
+
+  
+      <script src="../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../_static/documentation_options.js?v=f2a433a1"></script>
+      <script src="../_static/doctools.js?v=fd6eb6e6"></script>
+      <script src="../_static/sphinx_highlight.js?v=6ffebe34"></script>
+      <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+      <script src="../_static/copybutton.js?v=f281be69"></script>
+      <script src="../_static/design-tabs.js?v=f930bc37"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="3. 协程与协作式并发" href="../3.coroutine/index.html" />
+    <link rel="prev" title="2.1. 2.1 Metatables 与核心元方法" href="metatables.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            Lua 实战开发指南
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">目录</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../1.basic/index.html">1. 基础语法与核心机制</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">2. 元表与面向对象设计</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="metatables.html">2.1. 2.1 Metatables 与核心元方法</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">2.2. 2.2 Lua 面向对象惯用模式</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id1">2.2.1. 经典单继承模式</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id2">2.2.2. 多重继承与方法查找</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../3.coroutine/index.html">3. 协程与协作式并发</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../4.c_api/index.html">4. C 与 Lua 互操作 (C API)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../5.performance/index.html">5. 性能调优与最佳实践</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../6.testing/index.html">6. 测试与工程规范</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../7.ecosystem/index.html">7. 生态与生产实践</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../8.cheatsheet/index.html">8. 实用速查手册</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Lua 实战开发指南</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="index.html"><span class="section-number">2. </span>元表与面向对象设计</a></li>
+      <li class="breadcrumb-item active"><span class="section-number">2.2. </span>2.2 Lua 面向对象惯用模式</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/2.oop/oop_patterns.md.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="lua">
+<h1><span class="section-number">2.2. </span>2.2 Lua 面向对象惯用模式<a class="headerlink" href="#lua" title="Link to this heading"></a></h1>
+<section id="id1">
+<h2><span class="section-number">2.2.1. </span>经典单继承模式<a class="headerlink" href="#id1" title="Link to this heading"></a></h2>
+<div class="highlight-lua notranslate"><div class="highlight"><pre><span></span><span class="kd">local</span><span class="w"> </span><span class="nv">Class</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{}</span>
+<span class="nv">Class</span><span class="p">.</span><span class="py">__index</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">Class</span>
+
+<span class="kr">function</span><span class="w"> </span><span class="nc">Class</span><span class="p">:</span><span class="nf">new</span><span class="p">(</span><span class="nv">o</span><span class="p">)</span>
+<span class="w">    </span><span class="nv">o</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">o</span><span class="w"> </span><span class="ow">or</span><span class="w"> </span><span class="p">{}</span>
+<span class="w">    </span><span class="nb">setmetatable</span><span class="p">(</span><span class="nv">o</span><span class="p">,</span><span class="w"> </span><span class="nv">self</span><span class="p">)</span>
+<span class="w">    </span><span class="kr">return</span><span class="w"> </span><span class="nv">o</span>
+<span class="kr">end</span>
+
+<span class="kr">function</span><span class="w"> </span><span class="nc">Class</span><span class="p">:</span><span class="nf">extend</span><span class="p">()</span>
+<span class="w">    </span><span class="kd">local</span><span class="w"> </span><span class="nv">sub_class</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{}</span>
+<span class="w">    </span><span class="nv">sub_class</span><span class="p">.</span><span class="py">__index</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">sub_class</span>
+<span class="w">    </span><span class="nb">setmetatable</span><span class="p">(</span><span class="nv">sub_class</span><span class="p">,</span><span class="w"> </span><span class="nv">self</span><span class="p">)</span>
+<span class="w">    </span><span class="kr">return</span><span class="w"> </span><span class="nv">sub_class</span>
+<span class="kr">end</span>
+
+<span class="c1">-- 基类</span>
+<span class="kd">local</span><span class="w"> </span><span class="nv">Animal</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">Class</span><span class="p">:</span><span class="nf">new</span><span class="p">()</span>
+<span class="kr">function</span><span class="w"> </span><span class="nc">Animal</span><span class="p">:</span><span class="nf">speak</span><span class="p">()</span>
+<span class="w">    </span><span class="kr">return</span><span class="w"> </span><span class="s2">"..."</span>
+<span class="kr">end</span>
+
+<span class="c1">-- 派生类</span>
+<span class="kd">local</span><span class="w"> </span><span class="nv">Dog</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">Animal</span><span class="p">:</span><span class="nf">extend</span><span class="p">()</span>
+<span class="kr">function</span><span class="w"> </span><span class="nc">Dog</span><span class="p">:</span><span class="nf">speak</span><span class="p">()</span>
+<span class="w">    </span><span class="kr">return</span><span class="w"> </span><span class="s2">"Woof!"</span>
+<span class="kr">end</span>
+
+<span class="kd">local</span><span class="w"> </span><span class="nv">d</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">Dog</span><span class="p">:</span><span class="nf">new</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="nv">d</span><span class="p">:</span><span class="nf">speak</span><span class="p">())</span><span class="w"> </span><span class="c1">-- Woof!</span>
+</pre></div>
+</div>
+</section>
+<section id="id2">
+<h2><span class="section-number">2.2.2. </span>多重继承与方法查找<a class="headerlink" href="#id2" title="Link to this heading"></a></h2>
+<p>在复杂场景下，<code class="docutils literal notranslate"><span class="pre">__index</span></code> 可以是一个函数，用于在多个父类列表中依次查找方法：</p>
+<div class="highlight-lua notranslate"><div class="highlight"><pre><span></span><span class="kd">local</span><span class="w"> </span><span class="kr">function</span><span class="w"> </span><span class="nf">search</span><span class="p">(</span><span class="nv">key</span><span class="p">,</span><span class="w"> </span><span class="nv">parents</span><span class="p">)</span>
+<span class="w">    </span><span class="kr">for</span><span class="w"> </span><span class="nv">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="o">#</span><span class="nv">parents</span><span class="w"> </span><span class="kr">do</span>
+<span class="w">        </span><span class="kd">local</span><span class="w"> </span><span class="nv">val</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">parents</span><span class="p">[</span><span class="nv">i</span><span class="p">][</span><span class="nv">key</span><span class="p">]</span>
+<span class="w">        </span><span class="kr">if</span><span class="w"> </span><span class="nv">val</span><span class="w"> </span><span class="kr">then</span><span class="w"> </span><span class="kr">return</span><span class="w"> </span><span class="nv">val</span><span class="w"> </span><span class="kr">end</span>
+<span class="w">    </span><span class="kr">end</span>
+<span class="kr">end</span>
+
+<span class="kd">local</span><span class="w"> </span><span class="kr">function</span><span class="w"> </span><span class="nf">create_class</span><span class="p">(...)</span>
+<span class="w">    </span><span class="kd">local</span><span class="w"> </span><span class="nv">c</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{}</span>
+<span class="w">    </span><span class="kd">local</span><span class="w"> </span><span class="nv">parents</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{...}</span>
+<span class="w">    </span><span class="nb">setmetatable</span><span class="p">(</span><span class="nv">c</span><span class="p">,</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nv">__index</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kr">function</span><span class="p">(</span><span class="nv">t</span><span class="p">,</span><span class="w"> </span><span class="nv">k</span><span class="p">)</span>
+<span class="w">            </span><span class="kr">return</span><span class="w"> </span><span class="nf">search</span><span class="p">(</span><span class="nv">k</span><span class="p">,</span><span class="w"> </span><span class="nv">parents</span><span class="p">)</span>
+<span class="w">        </span><span class="kr">end</span>
+<span class="w">    </span><span class="p">})</span>
+<span class="w">    </span><span class="nv">c</span><span class="p">.</span><span class="py">__index</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">c</span>
+<span class="w">    </span><span class="kr">function</span><span class="w"> </span><span class="nc">c</span><span class="p">:</span><span class="nf">new</span><span class="p">(</span><span class="nv">o</span><span class="p">)</span>
+<span class="w">        </span><span class="nv">o</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">o</span><span class="w"> </span><span class="ow">or</span><span class="w"> </span><span class="p">{}</span>
+<span class="w">        </span><span class="nb">setmetatable</span><span class="p">(</span><span class="nv">o</span><span class="p">,</span><span class="w"> </span><span class="nv">c</span><span class="p">)</span>
+<span class="w">        </span><span class="kr">return</span><span class="w"> </span><span class="nv">o</span>
+<span class="w">    </span><span class="kr">end</span>
+<span class="w">    </span><span class="kr">return</span><span class="w"> </span><span class="nv">c</span>
+<span class="kr">end</span>
+</pre></div>
+</div>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="metatables.html" class="btn btn-neutral float-left" title="2.1. 2.1 Metatables 与核心元方法" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="../3.coroutine/index.html" class="btn btn-neutral float-right" title="3. 协程与协作式并发" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2026, Walter Fan, Creative Commons Attribution-NonCommercial-NoDerivatives 4.0 International License.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

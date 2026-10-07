@@ -1,0 +1,283 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="./">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Lua 实战开发指南 &mdash; Lua 实战开发指南 1.0 documentation</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=9edc463e" />
+      <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
+      <link rel="stylesheet" type="text/css" href="_static/sphinx-design.min.css?v=95c83b7e" />
+
+  
+      <script src="_static/jquery.js?v=5d32c60e"></script>
+      <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="_static/documentation_options.js?v=f2a433a1"></script>
+      <script src="_static/doctools.js?v=fd6eb6e6"></script>
+      <script src="_static/sphinx_highlight.js?v=6ffebe34"></script>
+      <script src="_static/clipboard.min.js?v=a7894cd8"></script>
+      <script src="_static/copybutton.js?v=f281be69"></script>
+      <script src="_static/design-tabs.js?v=f930bc37"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="1. 基础语法与核心机制" href="1.basic/index.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="#" class="icon icon-home">
+            Lua 实战开发指南
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">目录</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="1.basic/index.html">1. 基础语法与核心机制</a></li>
+<li class="toctree-l1"><a class="reference internal" href="2.oop/index.html">2. 元表与面向对象设计</a></li>
+<li class="toctree-l1"><a class="reference internal" href="3.coroutine/index.html">3. 协程与协作式并发</a></li>
+<li class="toctree-l1"><a class="reference internal" href="4.c_api/index.html">4. C 与 Lua 互操作 (C API)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="5.performance/index.html">5. 性能调优与最佳实践</a></li>
+<li class="toctree-l1"><a class="reference internal" href="6.testing/index.html">6. 测试与工程规范</a></li>
+<li class="toctree-l1"><a class="reference internal" href="7.ecosystem/index.html">7. 生态与生产实践</a></li>
+<li class="toctree-l1"><a class="reference internal" href="8.cheatsheet/index.html">8. 实用速查手册</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="#">Lua 实战开发指南</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="#" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Lua 实战开发指南</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/index.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="lua">
+<h1>Lua 实战开发指南<a class="headerlink" href="#lua" title="Link to this heading"></a></h1>
+<table class="docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><strong>Abstract</strong></p></td>
+<td><p>Lua 实战开发指南 - 专注于语言机制、易错点与生产实践 (FreeSWITCH/Redis/C API)</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>Authors</strong></p></td>
+<td><p>Walter Fan</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Category</strong></p></td>
+<td><p>Learning Note &amp; Practice</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>Status</strong></p></td>
+<td><p>WIP</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>License</strong></p></td>
+<td><p>CC-BY-NC-ND</p></td>
+</tr>
+</tbody>
+</table>
+<p>欢迎阅读 <strong>Lua 实战开发指南</strong>！本文档聚焦 Lua 语言在实际生产中（包括游戏、嵌入式系统、FreeSWITCH 话务脚本、Redis 高性能原子脚本及 C/Lua 混合编程）的 <strong>核心机制</strong>、<strong>易错陷阱</strong> 以及 <strong>最佳实践</strong>。</p>
+<section id="id1">
+<h2>目标读者<a class="headerlink" href="#id1" title="Link to this heading"></a></h2>
+<ul class="simple">
+<li><p>具备 C/C++/Go/Python 等任一语言基础，希望系统、高效掌握 Lua 的开发者</p></li>
+<li><p>编写与维护 FreeSWITCH 呼叫路由与 IVR 脚本的音视频工程师</p></li>
+<li><p>编写 Redis 复杂原子操作与流控脚本的后端工程师</p></li>
+<li><p>进行 C/C++ 与 Lua 互操作、嵌入式脚本化引擎开发的系统工程师</p></li>
+</ul>
+</section>
+<section id="id2">
+<h2>文档特点<a class="headerlink" href="#id2" title="Link to this heading"></a></h2>
+<ul class="simple">
+<li><p><strong>机制深入</strong>：深入剖析 Table 哈希与数组双重结构、Upvalue 闭包原理与协程调度</p></li>
+<li><p><strong>避坑导向</strong>：重点阐述 1-based 下标、nil 洞 holes、变量作用域泄露等经典陷阱</p></li>
+<li><p><strong>工程落地</strong>：提供完整的 C API 互调用、Redis 原子流控、FreeSWITCH 呼叫控制实战模式</p></li>
+</ul>
+<div class="toctree-wrapper compound">
+<p class="caption" role="heading"><span class="caption-text">目录</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="1.basic/index.html">1. 基础语法与核心机制</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="1.basic/overview.html">1.1. 1.1 Lua 核心设计与执行机制</a></li>
+<li class="toctree-l2"><a class="reference internal" href="1.basic/tables_and_traps.html">1.2. 1.2 Table 内部机制与边界陷阱</a></li>
+<li class="toctree-l2"><a class="reference internal" href="1.basic/functions_and_closures.html">1.3. 1.3 函数、多返回值与闭包机制</a></li>
+<li class="toctree-l2"><a class="reference internal" href="1.basic/pitfalls.html">1.4. 1.4 Lua 常见编程陷阱速查</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="2.oop/index.html">2. 元表与面向对象设计</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="2.oop/metatables.html">2.1. 2.1 Metatables 与核心元方法</a></li>
+<li class="toctree-l2"><a class="reference internal" href="2.oop/oop_patterns.html">2.2. 2.2 Lua 面向对象惯用模式</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="3.coroutine/index.html">3. 协程与协作式并发</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="3.coroutine/concepts.html">3.1. 3.1 协程机制与状态流转</a></li>
+<li class="toctree-l2"><a class="reference internal" href="3.coroutine/scheduler.html">3.2. 3.2 协作式微调度器实操</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="4.c_api/index.html">4. C 与 Lua 互操作 (C API)</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="4.c_api/stack_protocol.html">4.1. 4.1 Lua 虚拟栈协议</a></li>
+<li class="toctree-l2"><a class="reference internal" href="4.c_api/embedding_lua.html">4.2. 4.2 C 程序嵌入 Lua</a></li>
+<li class="toctree-l2"><a class="reference internal" href="4.c_api/c_modules.html">4.3. 4.3 编写 C 扩展模块供 Lua 调用</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="5.performance/index.html">5. 性能调优与最佳实践</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="5.performance/optimization.html">5.1. 5.1 Lua 核心性能优化法则</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="6.testing/index.html">6. 测试与工程规范</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="6.testing/unit_test_guide.html">6.1. 6.1 Lua 单元测试指南 (Busted 与 Mock 实战)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="6.testing/standards.html">6.2. 6.2 编码规范与静态检查</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="7.ecosystem/index.html">7. 生态与生产实践</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="7.ecosystem/freeswitch.html">7.1. 7.1 FreeSWITCH Lua 脚本实践</a></li>
+<li class="toctree-l2"><a class="reference internal" href="7.ecosystem/redis.html">7.2. 7.2 Redis Lua 原子脚本实践</a></li>
+<li class="toctree-l2"><a class="reference internal" href="7.ecosystem/openresty.html">7.3. 7.3 OpenResty 高性能网关</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="8.cheatsheet/index.html">8. 实用速查手册</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="8.cheatsheet/syntax.html">8.1. 8.1 Lua 核心语法速查</a></li>
+<li class="toctree-l2"><a class="reference internal" href="8.cheatsheet/c_api_quickref.html">8.2. 8.2 Lua C API 函数速查</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</section>
+<section id="id3">
+<h2>快速导航<a class="headerlink" href="#id3" title="Link to this heading"></a></h2>
+<div class="sd-container-fluid sd-sphinx-override sd-mb-4 docutils">
+<div class="sd-row sd-row-cols-2 sd-row-cols-xs-2 sd-row-cols-sm-2 sd-row-cols-md-2 sd-row-cols-lg-2 sd-g-3 sd-g-xs-3 sd-g-sm-3 sd-g-md-3 sd-g-lg-3 docutils">
+<div class="sd-col sd-d-flex-row docutils">
+<div class="sd-card sd-sphinx-override sd-w-100 sd-shadow-sm sd-card-hover docutils">
+<div class="sd-card-body docutils">
+<div class="sd-card-title sd-font-weight-bold docutils">
+基础语法与陷阱</div>
+<p class="sd-card-text">变量作用域、Table 内存与陷阱、函数多返回值、闭包与 Upvalue。</p>
+</div>
+<a class="sd-stretched-link sd-hide-link-text reference internal" href="1.basic/index.html"><span class="doc">基础语法与核心机制</span></a></div>
+</div>
+<div class="sd-col sd-d-flex-row docutils">
+<div class="sd-card sd-sphinx-override sd-w-100 sd-shadow-sm sd-card-hover docutils">
+<div class="sd-card-body docutils">
+<div class="sd-card-title sd-font-weight-bold docutils">
+元表与面向对象</div>
+<p class="sd-card-text">Metatable 与 Metamethod、原型继承、多重继承与类模拟。</p>
+</div>
+<a class="sd-stretched-link sd-hide-link-text reference internal" href="2.oop/index.html"><span class="doc">元表与面向对象设计</span></a></div>
+</div>
+<div class="sd-col sd-d-flex-row docutils">
+<div class="sd-card sd-sphinx-override sd-w-100 sd-shadow-sm sd-card-hover docutils">
+<div class="sd-card-body docutils">
+<div class="sd-card-title sd-font-weight-bold docutils">
+协程与协作调度</div>
+<p class="sd-card-text">非对称协程、生产者-消费者管道、协作式微事件循环实现。</p>
+</div>
+<a class="sd-stretched-link sd-hide-link-text reference internal" href="3.coroutine/index.html"><span class="doc">协程与协作式并发</span></a></div>
+</div>
+<div class="sd-col sd-d-flex-row docutils">
+<div class="sd-card sd-sphinx-override sd-w-100 sd-shadow-sm sd-card-hover docutils">
+<div class="sd-card-body docutils">
+<div class="sd-card-title sd-font-weight-bold docutils">
+C 与 Lua 互操作</div>
+<p class="sd-card-text">Lua 虚拟栈协议、C 调用 Lua、Lua 调用 C 扩展、LuaJIT FFI 实战。</p>
+</div>
+<a class="sd-stretched-link sd-hide-link-text reference internal" href="4.c_api/index.html"><span class="doc">C 与 Lua 互操作 (C API)</span></a></div>
+</div>
+<div class="sd-col sd-d-flex-row docutils">
+<div class="sd-card sd-sphinx-override sd-w-100 sd-shadow-sm sd-card-hover docutils">
+<div class="sd-card-body docutils">
+<div class="sd-card-title sd-font-weight-bold docutils">
+性能调优与最佳实践</div>
+<p class="sd-card-text">局部变量缓存加速、字符串拼接技巧、Table 预分配、LuaJIT JIT 友好性。</p>
+</div>
+<a class="sd-stretched-link sd-hide-link-text reference internal" href="5.performance/index.html"><span class="doc">性能调优与最佳实践</span></a></div>
+</div>
+<div class="sd-col sd-d-flex-row docutils">
+<div class="sd-card sd-sphinx-override sd-w-100 sd-shadow-sm sd-card-hover docutils">
+<div class="sd-card-body docutils">
+<div class="sd-card-title sd-font-weight-bold docutils">
+测试与工程规范</div>
+<p class="sd-card-text">Busted 单元测试框架、Mock 隔离、Luacheck 静态检查与编码规范。</p>
+</div>
+<a class="sd-stretched-link sd-hide-link-text reference internal" href="6.testing/index.html"><span class="doc">测试与工程规范</span></a></div>
+</div>
+<div class="sd-col sd-d-flex-row docutils">
+<div class="sd-card sd-sphinx-override sd-w-100 sd-shadow-sm sd-card-hover docutils">
+<div class="sd-card-body docutils">
+<div class="sd-card-title sd-font-weight-bold docutils">
+生态与场景实战</div>
+<p class="sd-card-text">FreeSWITCH 呼叫控制脚本、Redis 原子限流锁、OpenResty 网关。</p>
+</div>
+<a class="sd-stretched-link sd-hide-link-text reference internal" href="7.ecosystem/index.html"><span class="doc">生态与生产实践</span></a></div>
+</div>
+<div class="sd-col sd-d-flex-row docutils">
+<div class="sd-card sd-sphinx-override sd-w-100 sd-shadow-sm sd-card-hover docutils">
+<div class="sd-card-body docutils">
+<div class="sd-card-title sd-font-weight-bold docutils">
+速查手册</div>
+<p class="sd-card-text">常用语法、字符串正则模式、C API 函数速查与常用调试库。</p>
+</div>
+<a class="sd-stretched-link sd-hide-link-text reference internal" href="8.cheatsheet/index.html"><span class="doc">实用速查手册</span></a></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="1.basic/index.html" class="btn btn-neutral float-right" title="1. 基础语法与核心机制" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2026, Walter Fan, Creative Commons Attribution-NonCommercial-NoDerivatives 4.0 International License.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

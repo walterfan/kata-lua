@@ -1,0 +1,194 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>2.1. 2.1 Metatables 与核心元方法 &mdash; Lua 实战开发指南 1.0 documentation</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=9edc463e" />
+      <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+      <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
+
+  
+      <script src="../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../_static/documentation_options.js?v=f2a433a1"></script>
+      <script src="../_static/doctools.js?v=fd6eb6e6"></script>
+      <script src="../_static/sphinx_highlight.js?v=6ffebe34"></script>
+      <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+      <script src="../_static/copybutton.js?v=f281be69"></script>
+      <script src="../_static/design-tabs.js?v=f930bc37"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="2.2. 2.2 Lua 面向对象惯用模式" href="oop_patterns.html" />
+    <link rel="prev" title="2. 元表与面向对象设计" href="index.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            Lua 实战开发指南
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">目录</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../1.basic/index.html">1. 基础语法与核心机制</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">2. 元表与面向对象设计</a><ul class="current">
+<li class="toctree-l2 current"><a class="current reference internal" href="#">2.1. 2.1 Metatables 与核心元方法</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id1">2.1.1. 关键元方法对照表</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id2">2.1.2. 拦截机制示例</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="oop_patterns.html">2.2. 2.2 Lua 面向对象惯用模式</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../3.coroutine/index.html">3. 协程与协作式并发</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../4.c_api/index.html">4. C 与 Lua 互操作 (C API)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../5.performance/index.html">5. 性能调优与最佳实践</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../6.testing/index.html">6. 测试与工程规范</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../7.ecosystem/index.html">7. 生态与生产实践</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../8.cheatsheet/index.html">8. 实用速查手册</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Lua 实战开发指南</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="index.html"><span class="section-number">2. </span>元表与面向对象设计</a></li>
+      <li class="breadcrumb-item active"><span class="section-number">2.1. </span>2.1 Metatables 与核心元方法</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/2.oop/metatables.md.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="metatables">
+<h1><span class="section-number">2.1. </span>2.1 Metatables 与核心元方法<a class="headerlink" href="#metatables" title="Link to this heading"></a></h1>
+<p>元表允许定制普通 Table 的各种基础行为。</p>
+<section id="id1">
+<h2><span class="section-number">2.1.1. </span>关键元方法对照表<a class="headerlink" href="#id1" title="Link to this heading"></a></h2>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>元方法</p></th>
+<th class="head"><p>触发时机</p></th>
+<th class="head"><p>典型用途</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">__index</span></code></p></td>
+<td><p>读取表中不存在的键</p></td>
+<td><p>原型委托、属性继承、默认值</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">__newindex</span></code></p></td>
+<td><p>向表中不存在的键赋值</p></td>
+<td><p>拦截赋值、只读保护、数据校验</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">__tostring</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">tostring(t)</span></code> 或 <code class="docutils literal notranslate"><span class="pre">print(t)</span></code></p></td>
+<td><p>自定义对象的字符串打印</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">__call</span></code></p></td>
+<td><p>将 Table 作为函数调用 <code class="docutils literal notranslate"><span class="pre">t(...)</span></code></p></td>
+<td><p>函数对象、构造器封装</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">__add</span></code>, <code class="docutils literal notranslate"><span class="pre">__sub</span></code>, <code class="docutils literal notranslate"><span class="pre">__mul</span></code></p></td>
+<td><p>算术运算符重载</p></td>
+<td><p>向量、复数等数学类型支持</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">__eq</span></code>, <code class="docutils literal notranslate"><span class="pre">__lt</span></code>, <code class="docutils literal notranslate"><span class="pre">__le</span></code></p></td>
+<td><p>比较运算符重载</p></td>
+<td><p>自定义排序与相等性比较</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="id2">
+<h2><span class="section-number">2.1.2. </span>拦截机制示例<a class="headerlink" href="#id2" title="Link to this heading"></a></h2>
+<div class="highlight-lua notranslate"><div class="highlight"><pre><span></span><span class="kd">local</span><span class="w"> </span><span class="nv">Vector</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{}</span>
+<span class="nv">Vector</span><span class="p">.</span><span class="py">__index</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">Vector</span>
+
+<span class="kr">function</span><span class="w"> </span><span class="nc">Vector</span><span class="p">.</span><span class="nf">new</span><span class="p">(</span><span class="nv">x</span><span class="p">,</span><span class="w"> </span><span class="nv">y</span><span class="p">)</span>
+<span class="w">    </span><span class="kd">local</span><span class="w"> </span><span class="nv">self</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">setmetatable</span><span class="p">({},</span><span class="w"> </span><span class="nv">Vector</span><span class="p">)</span>
+<span class="w">    </span><span class="nv">self</span><span class="p">.</span><span class="py">x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">x</span>
+<span class="w">    </span><span class="nv">self</span><span class="p">.</span><span class="py">y</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">y</span>
+<span class="w">    </span><span class="kr">return</span><span class="w"> </span><span class="nv">self</span>
+<span class="kr">end</span>
+
+<span class="kr">function</span><span class="w"> </span><span class="nc">Vector</span><span class="p">.</span><span class="nf">__add</span><span class="p">(</span><span class="nv">a</span><span class="p">,</span><span class="w"> </span><span class="nv">b</span><span class="p">)</span>
+<span class="w">    </span><span class="kr">return</span><span class="w"> </span><span class="nv">Vector</span><span class="p">.</span><span class="nf">new</span><span class="p">(</span><span class="nv">a</span><span class="p">.</span><span class="py">x</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="nv">b</span><span class="p">.</span><span class="py">x</span><span class="p">,</span><span class="w"> </span><span class="nv">a</span><span class="p">.</span><span class="py">y</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="nv">b</span><span class="p">.</span><span class="py">y</span><span class="p">)</span>
+<span class="kr">end</span>
+
+<span class="kr">function</span><span class="w"> </span><span class="nc">Vector</span><span class="p">:</span><span class="nf">__tostring</span><span class="p">()</span>
+<span class="w">    </span><span class="kr">return</span><span class="w"> </span><span class="nb">string.format</span><span class="p">(</span><span class="s2">"Vector(%.1f, %.1f)"</span><span class="p">,</span><span class="w"> </span><span class="nv">self</span><span class="p">.</span><span class="py">x</span><span class="p">,</span><span class="w"> </span><span class="nv">self</span><span class="p">.</span><span class="py">y</span><span class="p">)</span>
+<span class="kr">end</span>
+
+<span class="kd">local</span><span class="w"> </span><span class="nv">v1</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">Vector</span><span class="p">.</span><span class="nf">new</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">)</span>
+<span class="kd">local</span><span class="w"> </span><span class="nv">v2</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">Vector</span><span class="p">.</span><span class="nf">new</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span><span class="w"> </span><span class="mi">4</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="nv">v1</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="nv">v2</span><span class="p">)</span><span class="w"> </span><span class="c1">-- 输出 Vector(4.0, 6.0)</span>
+</pre></div>
+</div>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="index.html" class="btn btn-neutral float-left" title="2. 元表与面向对象设计" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="oop_patterns.html" class="btn btn-neutral float-right" title="2.2. 2.2 Lua 面向对象惯用模式" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2026, Walter Fan, Creative Commons Attribution-NonCommercial-NoDerivatives 4.0 International License.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

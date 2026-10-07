@@ -3,7 +3,7 @@ luac.out
 
 # uv / Python
 .venv/
-
+build/
 # luarocks build files
 *.src.rock
 *.zip

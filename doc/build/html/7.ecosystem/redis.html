@@ -1,0 +1,178 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>7.2. 7.2 Redis Lua 原子脚本实践 &mdash; Lua 实战开发指南 1.0 documentation</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=9edc463e" />
+      <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+      <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
+
+  
+      <script src="../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../_static/documentation_options.js?v=f2a433a1"></script>
+      <script src="../_static/doctools.js?v=fd6eb6e6"></script>
+      <script src="../_static/sphinx_highlight.js?v=6ffebe34"></script>
+      <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+      <script src="../_static/copybutton.js?v=f281be69"></script>
+      <script src="../_static/design-tabs.js?v=f930bc37"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="7.3. 7.3 OpenResty 高性能网关" href="openresty.html" />
+    <link rel="prev" title="7.1. 7.1 FreeSWITCH Lua 脚本实践" href="freeswitch.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            Lua 实战开发指南
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">目录</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../1.basic/index.html">1. 基础语法与核心机制</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../2.oop/index.html">2. 元表与面向对象设计</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../3.coroutine/index.html">3. 协程与协作式并发</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../4.c_api/index.html">4. C 与 Lua 互操作 (C API)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../5.performance/index.html">5. 性能调优与最佳实践</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../6.testing/index.html">6. 测试与工程规范</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">7. 生态与生产实践</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="freeswitch.html">7.1. 7.1 FreeSWITCH Lua 脚本实践</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">7.2. 7.2 Redis Lua 原子脚本实践</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id1">7.2.1. 1. 规则与约束</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id2">7.2.2. 2. 分布式锁安全释放脚本</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id3">7.2.3. 3. 滑动窗口限流脚本</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="openresty.html">7.3. 7.3 OpenResty 高性能网关</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../8.cheatsheet/index.html">8. 实用速查手册</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Lua 实战开发指南</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="index.html"><span class="section-number">7. </span>生态与生产实践</a></li>
+      <li class="breadcrumb-item active"><span class="section-number">7.2. </span>7.2 Redis Lua 原子脚本实践</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/7.ecosystem/redis.md.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="redis-lua">
+<h1><span class="section-number">7.2. </span>7.2 Redis Lua 原子脚本实践<a class="headerlink" href="#redis-lua" title="Link to this heading"></a></h1>
+<p>Redis 保证内置执行的 Lua 脚本具备<strong>绝对原子性</strong>（单线程执行期间不插入其他命令），避免竞态条件。</p>
+<section id="id1">
+<h2><span class="section-number">7.2.1. </span>1. 规则与约束<a class="headerlink" href="#id1" title="Link to this heading"></a></h2>
+<ul class="simple">
+<li><p>所有的键名必须通过 <code class="docutils literal notranslate"><span class="pre">KEYS[i]</span></code> 传入，所有的额外参数通过 <code class="docutils literal notranslate"><span class="pre">ARGV[i]</span></code> 传入（便于 Redis Cluster 路由与键校验）。</p></li>
+<li><p>脚本必须保持轻量与极快响应，避免长时间运行阻塞 Redis 主线程。</p></li>
+</ul>
+</section>
+<section id="id2">
+<h2><span class="section-number">7.2.2. </span>2. 分布式锁安全释放脚本<a class="headerlink" href="#id2" title="Link to this heading"></a></h2>
+<div class="highlight-lua notranslate"><div class="highlight"><pre><span></span><span class="c1">-- KEYS[1]: 锁的 key</span>
+<span class="c1">-- ARGV[1]: 客户端唯一标识 requestId</span>
+<span class="kr">if</span><span class="w"> </span><span class="nv">redis</span><span class="p">.</span><span class="nf">call</span><span class="p">(</span><span class="s2">"get"</span><span class="p">,</span><span class="w"> </span><span class="nv">KEYS</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="nv">ARGV</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="w"> </span><span class="kr">then</span>
+<span class="w">    </span><span class="kr">return</span><span class="w"> </span><span class="nv">redis</span><span class="p">.</span><span class="nf">call</span><span class="p">(</span><span class="s2">"del"</span><span class="p">,</span><span class="w"> </span><span class="nv">KEYS</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+<span class="kr">else</span>
+<span class="w">    </span><span class="kr">return</span><span class="w"> </span><span class="mi">0</span>
+<span class="kr">end</span>
+</pre></div>
+</div>
+</section>
+<section id="id3">
+<h2><span class="section-number">7.2.3. </span>3. 滑动窗口限流脚本<a class="headerlink" href="#id3" title="Link to this heading"></a></h2>
+<p>利用 Redis ZSET 结构实现精准滑动时间窗口流控：</p>
+<div class="highlight-lua notranslate"><div class="highlight"><pre><span></span><span class="c1">-- KEYS[1]: 限制对象的 key (如 rate:user_123)</span>
+<span class="c1">-- ARGV[1]: 当前时间戳 (毫秒)</span>
+<span class="c1">-- ARGV[2]: 窗口时间大小 (毫秒)</span>
+<span class="c1">-- ARGV[3]: 窗口内允许最大请求次数</span>
+<span class="kd">local</span><span class="w"> </span><span class="nv">key</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">KEYS</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+<span class="kd">local</span><span class="w"> </span><span class="nv">now</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">tonumber</span><span class="p">(</span><span class="nv">ARGV</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+<span class="kd">local</span><span class="w"> </span><span class="nv">window</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">tonumber</span><span class="p">(</span><span class="nv">ARGV</span><span class="p">[</span><span class="mi">2</span><span class="p">])</span>
+<span class="kd">local</span><span class="w"> </span><span class="nv">limit</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">tonumber</span><span class="p">(</span><span class="nv">ARGV</span><span class="p">[</span><span class="mi">3</span><span class="p">])</span>
+
+<span class="kd">local</span><span class="w"> </span><span class="nv">clear_before</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">now</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="nv">window</span>
+<span class="nv">redis</span><span class="p">.</span><span class="nf">call</span><span class="p">(</span><span class="s1">'zremrangebyscore'</span><span class="p">,</span><span class="w"> </span><span class="nv">key</span><span class="p">,</span><span class="w"> </span><span class="s1">'-inf'</span><span class="p">,</span><span class="w"> </span><span class="nv">clear_before</span><span class="p">)</span>
+
+<span class="kd">local</span><span class="w"> </span><span class="nv">current_requests</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">redis</span><span class="p">.</span><span class="nf">call</span><span class="p">(</span><span class="s1">'zcard'</span><span class="p">,</span><span class="w"> </span><span class="nv">key</span><span class="p">)</span>
+<span class="kr">if</span><span class="w"> </span><span class="nv">current_requests</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="nv">limit</span><span class="w"> </span><span class="kr">then</span>
+<span class="w">    </span><span class="nv">redis</span><span class="p">.</span><span class="nf">call</span><span class="p">(</span><span class="s1">'zadd'</span><span class="p">,</span><span class="w"> </span><span class="nv">key</span><span class="p">,</span><span class="w"> </span><span class="nv">now</span><span class="p">,</span><span class="w"> </span><span class="nv">now</span><span class="p">)</span>
+<span class="w">    </span><span class="nv">redis</span><span class="p">.</span><span class="nf">call</span><span class="p">(</span><span class="s1">'pexpire'</span><span class="p">,</span><span class="w"> </span><span class="nv">key</span><span class="p">,</span><span class="w"> </span><span class="nv">window</span><span class="p">)</span>
+<span class="w">    </span><span class="kr">return</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="c1">-- 允许通过</span>
+<span class="kr">else</span>
+<span class="w">    </span><span class="kr">return</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="c1">-- 限流拦截</span>
+<span class="kr">end</span>
+</pre></div>
+</div>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="freeswitch.html" class="btn btn-neutral float-left" title="7.1. 7.1 FreeSWITCH Lua 脚本实践" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="openresty.html" class="btn btn-neutral float-right" title="7.3. 7.3 OpenResty 高性能网关" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2026, Walter Fan, Creative Commons Attribution-NonCommercial-NoDerivatives 4.0 International License.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>
