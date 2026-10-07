@@ -1,0 +1,24 @@
+.gitignore
+  s_ed7c1a702a5265::t_6cdf766c571f0e 4-6
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.16",
+  "base_commit_sha": "e8a1180e3b454807c101331e15633e26dbb13fd4",
+  "prompts": {},
+  "humans": {
+    "h_0ab5b9336177d2": {
+      "author": "Walter Fan <walter.fan@zoom.us>"
+    }
+  },
+  "sessions": {
+    "s_ed7c1a702a5265": {
+      "agent_id": {
+        "tool": "cursor",
+        "id": "c0732d44-ff4d-48fd-998c-3ff618c4962e",
+        "model": "auto-smart"
+      },
+      "human_author": "Walter Fan <walter.fan@zoom.us>"
+    }
+  }
+}
