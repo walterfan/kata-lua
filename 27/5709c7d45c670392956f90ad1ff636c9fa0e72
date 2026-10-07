@@ -1,0 +1,230 @@
+doc/build/html/7.ecosystem/index.html
+  s_ed7c1a702a5265::t_9ddc94717e2e20 1-147
+doc/build/html/1.basic/index.html
+  s_ed7c1a702a5265::t_9ddc94717e2e20 1-156
+doc/build/html/7.ecosystem/openresty.html
+  s_ed7c1a702a5265::t_9ddc94717e2e20 1-149
+pyproject.toml
+  s_ed7c1a702a5265::t_049ed8e57cca3f 1-17
+doc/build/html/.buildinfo
+  s_ed7c1a702a5265::t_9ddc94717e2e20 1-4
+doc/build/html/_sphinx_design_static/design-tabs.js
+  s_ed7c1a702a5265::t_9ddc94717e2e20 1-101
+doc/build/html/1.basic/overview.html
+  s_ed7c1a702a5265::t_9ddc94717e2e20 1-176
+doc/lua_test.md
+  h_0ab5b9336177d2 1-771
+doc/build/html/6.testing/index.html
+  s_ed7c1a702a5265::t_9ddc94717e2e20 1-139
+doc/build/html/_static/jquery.js
+  s_ed7c1a702a5265::t_9ddc94717e2e20 1-2
+doc/basic.md
+  h_0ab5b9336177d2 1-23
+doc/freeswitch.md
+  h_0ab5b9336177d2 1-20
+doc/build/html/4.c_api/embedding_lua.html
+  s_ed7c1a702a5265::t_9ddc94717e2e20 1-170
+doc/build/html/5.performance/optimization.html
+  s_ed7c1a702a5265::t_9ddc94717e2e20 1-163
+doc/build/html/2.oop/metatables.html
+  s_ed7c1a702a5265::t_9ddc94717e2e20 1-194
+doc/build/html/4.c_api/index.html
+  s_ed7c1a702a5265::t_9ddc94717e2e20 1-138
+doc/source/conf.py
+  s_ed7c1a702a5265::t_a7c9811e15947b 19
+  s_ed7c1a702a5265::t_b688c6d2598998 16-18
+  s_ed7c1a702a5265::t_154691985a5a9b 20-22
+doc/build/html/8.cheatsheet/c_api_quickref.html
+  s_ed7c1a702a5265::t_9ddc94717e2e20 1-170
+doc/build/html/_static/pygments.css
+  s_ed7c1a702a5265::t_9ddc94717e2e20 1-75
+doc/build/html/8.cheatsheet/syntax.html
+  s_ed7c1a702a5265::t_9ddc94717e2e20 1-197
+doc/Makefile
+  s_ed7c1a702a5265::t_6d525aacf1cf2c 5-19
+  s_ed7c1a702a5265::t_c5f5c7e1306c12 2-4
+  s_ed7c1a702a5265::t_961a9aa2f48873 20-22
+doc/build/html/2.oop/index.html
+  s_ed7c1a702a5265::t_9ddc94717e2e20 1-140
+doc/build/html/_static/language_data.js
+  s_ed7c1a702a5265::t_9ddc94717e2e20 1-13
+doc/build/html/searchindex.js
+  s_ed7c1a702a5265::t_9ddc94717e2e20 1
+doc/build/html/3.coroutine/index.html
+  s_ed7c1a702a5265::t_9ddc94717e2e20 1-136
+doc/build/html/7.ecosystem/redis.html
+  s_ed7c1a702a5265::t_9ddc94717e2e20 1-178
+doc/build/html/7.ecosystem/freeswitch.html
+  s_ed7c1a702a5265::t_9ddc94717e2e20 1-148
+doc/build/html/search.html
+  s_ed7c1a702a5265::t_9ddc94717e2e20 1-490
+doc/build/html/6.testing/unit_test_guide.html
+  s_ed7c1a702a5265::t_9ddc94717e2e20 1-156
+doc/build/html/_static/js/versions.js
+  s_ed7c1a702a5265::t_9ddc94717e2e20 1-228
+doc/build/html/_static/documentation_options.js
+  s_ed7c1a702a5265::t_9ddc94717e2e20 1-13
+doc/build/html/_static/_sphinx_javascript_frameworks_compat.js
+  s_ed7c1a702a5265::t_9ddc94717e2e20 1-123
+doc/README.md
+  h_0ab5b9336177d2 1-12
+doc/build/html/_static/copybutton.js
+  s_ed7c1a702a5265::t_9ddc94717e2e20 1-248
+doc/build/html/2.oop/oop_patterns.html
+  s_ed7c1a702a5265::t_9ddc94717e2e20 1-194
+doc/build/html/1.basic/tables_and_traps.html
+  s_ed7c1a702a5265::t_9ddc94717e2e20 1-183
+doc/build/html/index.html
+  s_ed7c1a702a5265::t_9ddc94717e2e20 1-283
+doc/build/html/6.testing/standards.html
+  s_ed7c1a702a5265::t_9ddc94717e2e20 1-158
+doc/build/html/_static/design-tabs.js
+  s_ed7c1a702a5265::t_9ddc94717e2e20 1-101
+doc/build/html/5.performance/index.html
+  s_ed7c1a702a5265::t_9ddc94717e2e20 1-134
+doc/build/html/4.c_api/stack_protocol.html
+  s_ed7c1a702a5265::t_9ddc94717e2e20 1-157
+doc/build/html/8.cheatsheet/index.html
+  s_ed7c1a702a5265::t_9ddc94717e2e20 1-142
+doc/build/html/4.c_api/c_modules.html
+  s_ed7c1a702a5265::t_9ddc94717e2e20 1-153
+Makefile
+  s_ed7c1a702a5265::t_27442a2a2921de 92
+  s_ed7c1a702a5265::t_b18bf0766b3eaf 50-59
+  s_ed7c1a702a5265::t_d847abd640a9e3 13
+  s_ed7c1a702a5265::t_2ce0a630915c8e 45-47
+  s_ed7c1a702a5265::t_68e52b4376c8cb 15
+  s_ed7c1a702a5265::t_53b7663f25724c 3
+  s_ed7c1a702a5265::t_b532bd18a1f71f 1-2
+  s_ed7c1a702a5265::t_b3bfad9bcad1cc 4-6,10-12
+  s_ed7c1a702a5265::t_30f80da7b7072a 14
+  s_ed7c1a702a5265::t_7973a008bc5444 16-18,42-44
+  s_ed7c1a702a5265::t_e8cfe673813e5c 48-49
+  s_ed7c1a702a5265::t_8dd3f4ad5f4168 60-62,89-91
+  s_ed7c1a702a5265::t_2cd98192f98db1 93-95
+doc/build/html/1.basic/functions_and_closures.html
+  s_ed7c1a702a5265::t_9ddc94717e2e20 1-188
+doc/build/html/genindex.html
+  s_ed7c1a702a5265::t_9ddc94717e2e20 1-475
+doc/build/html/3.coroutine/scheduler.html
+  s_ed7c1a702a5265::t_9ddc94717e2e20 1-172
+doc/build/html/_static/basic.css
+  s_ed7c1a702a5265::t_9ddc94717e2e20 1-906
+doc/build/html/1.basic/pitfalls.html
+  s_ed7c1a702a5265::t_9ddc94717e2e20 1-169
+doc/build/html/3.coroutine/concepts.html
+  s_ed7c1a702a5265::t_9ddc94717e2e20 1-169
+doc/build/html/_sources/1.basic/functions_and_closures.md.txt
+  s_ed7c1a702a5265::t_1c0fe27898a1e2 1-57
+doc/build/html/_sources/1.basic/index.md.txt
+  s_ed7c1a702a5265::t_de5e48e7b8dcdd 1-12
+doc/build/html/_sources/1.basic/overview.md.txt
+  s_ed7c1a702a5265::t_34d01ee4defaa5 1-40
+doc/build/html/_sources/1.basic/pitfalls.md.txt
+  s_ed7c1a702a5265::t_6992cd8a0d51cf 1-40
+doc/build/html/_sources/1.basic/tables_and_traps.md.txt
+  s_ed7c1a702a5265::t_06f8ad884484d1 1-47
+doc/build/html/_sources/2.oop/index.md.txt
+  s_ed7c1a702a5265::t_cbed8db91b95cf 1-10
+doc/build/html/_sources/2.oop/metatables.md.txt
+  s_ed7c1a702a5265::t_fc7038a133e2c3 1-40
+doc/build/html/_sources/2.oop/oop_patterns.md.txt
+  s_ed7c1a702a5265::t_6356ef820517ea 1-66
+doc/build/html/_sources/3.coroutine/concepts.md.txt
+  s_ed7c1a702a5265::t_711f52635833dd 1-38
+doc/build/html/_sources/3.coroutine/index.md.txt
+  s_ed7c1a702a5265::t_bcf65c57e1525b 1-10
+doc/build/html/_sources/3.coroutine/scheduler.md.txt
+  s_ed7c1a702a5265::t_7347dafb11dae9 1-49
+doc/build/html/_sources/4.c_api/c_modules.md.txt
+  s_ed7c1a702a5265::t_d260a0e15ce61a 1-31
+doc/build/html/_sources/4.c_api/embedding_lua.md.txt
+  s_ed7c1a702a5265::t_3f512cd347cffd 1-46
+doc/build/html/_sources/4.c_api/index.md.txt
+  s_ed7c1a702a5265::t_6efa07d3612319 1-11
+doc/build/html/_sources/4.c_api/stack_protocol.md.txt
+  s_ed7c1a702a5265::t_df296673469a7d 1-25
+doc/build/html/_sources/5.performance/index.md.txt
+  s_ed7c1a702a5265::t_f8448e3732508f 1-7
+doc/build/html/_sources/5.performance/optimization.md.txt
+  s_ed7c1a702a5265::t_b293ca0a114dd9 1-31
+doc/build/html/_sources/6.testing/index.md.txt
+  s_ed7c1a702a5265::t_77b13f3b499ce2 1-8
+doc/build/html/_sources/6.testing/standards.md.txt
+  s_ed7c1a702a5265::t_86151e5da3a03e 1-27
+doc/build/html/_sources/6.testing/unit_test_guide.md.txt
+  s_ed7c1a702a5265::t_7e466844698c0b 1-29
+doc/build/html/_sources/7.ecosystem/freeswitch.md.txt
+  s_ed7c1a702a5265::t_f9448109e837aa 1-15
+doc/build/html/_sources/7.ecosystem/index.md.txt
+  s_ed7c1a702a5265::t_67fa431f82848e 1-11
+doc/build/html/_sources/7.ecosystem/openresty.md.txt
+  s_ed7c1a702a5265::t_748b19a7b8a127 1-18
+doc/build/html/_sources/7.ecosystem/redis.md.txt
+  s_ed7c1a702a5265::t_28e2984e0e586c 1-47
+doc/build/html/_sources/8.cheatsheet/c_api_quickref.md.txt
+  s_ed7c1a702a5265::t_eb2fb4066f4e2e 1-41
+doc/build/html/_sources/8.cheatsheet/index.md.txt
+  s_ed7c1a702a5265::t_fc3fbba3361500 1-8
+doc/build/html/_sources/8.cheatsheet/syntax.md.txt
+  s_ed7c1a702a5265::t_0c4cdacf1c227d 1-36
+doc/build/html/_sources/index.rst.txt
+  s_ed7c1a702a5265::t_e22bddccdbcc99 1-97
+doc/build/html/_sphinx_design_static/sphinx-design.min.css
+  s_ed7c1a702a5265::t_13b14b2e21be03 1
+doc/build/html/_static/base-stemmer.js
+  s_ed7c1a702a5265::t_206b82845237d5 1-476
+doc/build/html/_static/check-solid.svg
+  s_ed7c1a702a5265::t_94774d88c7ff9b 1-4
+doc/build/html/_static/clipboard.min.js
+  s_ed7c1a702a5265::t_0deee6b0ebb5c4 1-7
+doc/build/html/_static/copy-button.svg
+  s_ed7c1a702a5265::t_2301b61105eaf1 1-5
+doc/build/html/_static/copybutton.css
+  s_ed7c1a702a5265::t_f2f16ce5982b63 1-94
+doc/build/html/_static/copybutton_funcs.js
+  s_ed7c1a702a5265::t_2d9e2298233ba8 1-73
+doc/build/html/_static/css/badge_only.css
+  s_ed7c1a702a5265::t_ef446bc8211e9f 1
+doc/build/html/_static/css/fonts/fontawesome-webfont.svg
+  s_ed7c1a702a5265::t_68cbfc38a595c1 1-2671
+doc/build/html/_static/css/theme.css
+  s_ed7c1a702a5265::t_d9f9292d076267 1-4
+doc/build/html/_static/doctools.js
+  s_ed7c1a702a5265::t_cce062b70a529c 1-150
+doc/build/html/_static/english-stemmer.js
+  s_ed7c1a702a5265::t_3daa9473742cfc 1-1066
+doc/build/html/_static/js/badge_only.js
+  s_ed7c1a702a5265::t_f5e4270b283a9a 1
+doc/build/html/_static/js/theme.js
+  s_ed7c1a702a5265::t_425ffb8f7541e6 1
+doc/build/html/_static/searchtools.js
+  s_ed7c1a702a5265::t_28f1d3e0a62fbb 1-693
+doc/build/html/_static/sphinx-design.min.css
+  s_ed7c1a702a5265::t_21d0b277e93274 1
+doc/build/html/_static/sphinx_highlight.js
+  s_ed7c1a702a5265::t_cc0a66ee7c46e5 1-159
+uv.lock
+  s_ed7c1a702a5265::t_7d5da208653c49 1-945
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.16",
+  "base_commit_sha": "275709c7d45c670392956f90ad1ff636c9fa0e72",
+  "prompts": {},
+  "humans": {
+    "h_0ab5b9336177d2": {
+      "author": "Walter Fan <walter.fan@zoom.us>"
+    }
+  },
+  "sessions": {
+    "s_ed7c1a702a5265": {
+      "agent_id": {
+        "tool": "cursor",
+        "id": "c0732d44-ff4d-48fd-998c-3ff618c4962e",
+        "model": "auto-smart"
+      },
+      "human_author": "Walter Fan <walter.fan@zoom.us>"
+    }
+  }
+}
